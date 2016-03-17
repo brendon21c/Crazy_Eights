@@ -94,7 +94,7 @@ public class PlayerRules {
         String suit2 = separated2[2];
 
 
-        if (number1.equalsIgnoreCase(number2) || number1.equalsIgnoreCase("8")) {
+        if (number1.equalsIgnoreCase(number2)) {
 
             this.hand.remove(selection);
             this.discardPile.add(getCurrentCard());
@@ -106,6 +106,17 @@ public class PlayerRules {
             this.discardPile.add(getCurrentCard());
             setCurrentCard(selection);
 
+        } else if (number1.equalsIgnoreCase("8")) {
+
+            Scanner scanner = new Scanner(System.in);
+            this.hand.remove(selection);
+            this.discardPile.add(getCurrentCard());
+
+            System.out.println("Choose a new suit.");
+            String choice = scanner.nextLine();
+
+            setCurrentCard(choice);
+
         } else {
 
             System.out.println("That is not a valid choice.");
@@ -113,6 +124,14 @@ public class PlayerRules {
             playerSelection();
 
         }
+
+    }
+
+    public void newDeck() {
+
+        Stack oldDeck = this.discardPile;
+        Collections.shuffle(oldDeck);
+        setDeck(oldDeck);
 
     }
 

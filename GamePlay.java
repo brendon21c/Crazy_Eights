@@ -10,6 +10,7 @@ public class GamePlay {
 
         Deck newDeck = new Deck();
         PlayerRules player = new PlayerRules();
+        ComputerPlayer comp = new ComputerPlayer();
 
 
         Stack deck1 = newDeck.Deck();
@@ -21,9 +22,15 @@ public class GamePlay {
             player.PlayerHand(deck1.pop().toString());
 
         }
+        for (int x = 0; x < 5; x++) {
+
+            comp.computerHand(deck1.pop().toString());
+
+        }
 
         LinkedList playerHand1 = player.hand;
         player.setCurrentCard(deck1.pop().toString());
+
 
         while (playerHand1 != null) {
 
@@ -35,7 +42,11 @@ public class GamePlay {
             player.playerSelection();
             player.playCheck();
 
+            if (deck1 == null) {
 
+                player.newDeck();
+                deck1 = player.getDeck();
+            }
 
 
         }
