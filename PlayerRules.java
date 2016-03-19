@@ -9,7 +9,16 @@ public class PlayerRules {
     protected LinkedList hand = new LinkedList();
     protected Stack discardPile = new Stack();
     private String tempCard;
-    private Stack deck;
+    protected Stack deck;
+
+
+    public Stack getDiscardPile() {
+        return discardPile;
+    }
+
+    public void setDiscardPile(Stack discardPile) {
+        this.discardPile = discardPile;
+    }
 
     public Stack getDeck() {
         return deck;
@@ -111,6 +120,7 @@ public class PlayerRules {
             Scanner scanner = new Scanner(System.in);
             this.hand.remove(selection);
             this.discardPile.add(getCurrentCard());
+            this.discardPile.add(selection);
 
             System.out.println("Choose a new suit.");
             String choice = scanner.nextLine();

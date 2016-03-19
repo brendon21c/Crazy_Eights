@@ -10,7 +10,7 @@ public class GamePlay {
 
         Deck newDeck = new Deck();
         PlayerRules player = new PlayerRules();
-        ComputerPlayer comp = new ComputerPlayer();
+        //ComputerPlayer comp = new ComputerPlayer();
 
 
         Stack deck1 = newDeck.Deck();
@@ -29,10 +29,11 @@ public class GamePlay {
         }
 
         LinkedList playerHand1 = player.hand;
+        LinkedList computerHand = player.compHand;
         player.setCurrentCard(deck1.pop().toString());
 
 
-        while (playerHand1 != null) {
+        while (playerHand1 != null || computerHand != null) {
 
 
             System.out.println("Let's play crazy eights! \n");
@@ -41,6 +42,7 @@ public class GamePlay {
 
             player.playerSelection();
             player.playCheck();
+            comp.CompSelection();
 
             if (deck1 == null) {
 

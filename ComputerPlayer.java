@@ -2,15 +2,17 @@ package com.Brendon;
 
 
 import java.util.LinkedList;
+import java.util.Random;
 import java.util.Scanner;
 
 
-public class ComputerPlayer {
+public class ComputerPlayer extends PlayerRules{
 
-    PlayerRules helpfulCode = new PlayerRules();
+    //PlayerRules helpfulCode = new PlayerRules();
 
     protected LinkedList compHand = new LinkedList();
-    private String tempCard;
+
+
 
     public void computerHand(String card) {
 
@@ -18,10 +20,10 @@ public class ComputerPlayer {
 
     }
 
-    public String CompSelection() {
+    public void CompSelection() {
 
         String selection = "";
-        String currentCard = helpfulCode.getCurrentCard();
+       String currentCard = getCurrentCard();
 
         for (int x = 0; x < this.compHand.size(); x++) {
 
@@ -36,23 +38,42 @@ public class ComputerPlayer {
 
             if (number1.equalsIgnoreCase("8")) {
 
+                Random num = new Random();
                 LinkedList suits = new LinkedList();
                 suits.add("Diamonds");
                 suits.add("Hearts");
                 suits.add("Clubs");
                 suits.add("Spades");
 
+                int random = num.nextInt(0) + 5;
+                String newSuit = suits.get(random).toString();
+
+                selection = newSuit;
+                this.compHand.remove(tempCard);
+                this.discardPile.add(tempCard);
+                this.discardPile.add(getCurrentCard());
+                this.setCurrentCard(selection);
+
+            }
+
+            else if (number1.equalsIgnoreCase(number2) || suit1.equalsIgnoreCase(suit2)) {
+
+                selection = tempCard;
+
+                this.compHand.remove(tempCard);
+                this.discardPile.add(tempCard);
+                this.discardPile.add(getCurrentCard());
+                this.setCurrentCard(selection);
+
+            } else {
+
+                String card = this.deck.pop().toString();
+                this.compHand.add(card);
 
 
             }
 
         }
-
-
-
-
-
-
 
     }
 
