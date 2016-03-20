@@ -8,30 +8,6 @@ import java.util.Stack;
 
 public class Deck {
 
-    /*
-    public static void main(String[] args) {
-
-        // this section of code is me just playing with my final shuffled deck, Setting up the game War.
-
-        Stack deckTest = Deck();
-        //System.out.println(deckTest);
-        Collections.shuffle(deckTest);
-        //System.out.println(deckTest);
-
-        String card1 = deckTest.pop().toString();
-        String card2 = deckTest.pop().toString();
-        //System.out.println(card1);
-        //System.out.println(card2);
-
-        String separated[] = card1.split(" ");
-        String separated2[] = card2.split(" ");
-
-        String sepNum = separated[0];
-        String sepNum2 = separated2[0];
-
-
-    } */
-
 
 
     public Stack Deck() {

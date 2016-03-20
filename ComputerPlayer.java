@@ -6,11 +6,14 @@ import java.util.Random;
 import java.util.Scanner;
 
 
-public class ComputerPlayer extends PlayerRules{
+public class ComputerPlayer extends Deck{
 
     //PlayerRules helpfulCode = new PlayerRules();
+    Deck test = new Deck();
 
     protected LinkedList compHand = new LinkedList();
+    protected String currentCard = test.currentCard;
+
 
 
 
@@ -23,7 +26,7 @@ public class ComputerPlayer extends PlayerRules{
     public void CompSelection() {
 
         String selection = "";
-       String currentCard = getCurrentCard();
+        String currentCard = this.currentCard;
 
         for (int x = 0; x < this.compHand.size(); x++) {
 

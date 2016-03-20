@@ -13,6 +13,7 @@ public class GamePlay {
         //ComputerPlayer comp = new ComputerPlayer();
 
 
+
         Stack deck1 = newDeck.Deck();
         Collections.shuffle(deck1);
         player.setDeck(deck1);
@@ -24,7 +25,7 @@ public class GamePlay {
         }
         for (int x = 0; x < 5; x++) {
 
-            comp.computerHand(deck1.pop().toString());
+            player.computerHand(deck1.pop().toString());
 
         }
 
@@ -40,9 +41,10 @@ public class GamePlay {
             System.out.println("The current card in play: " + player.getCurrentCard());
             System.out.println("This is your hand: \n");
 
+            player.CompSelection();
             player.playerSelection();
             player.playCheck();
-            comp.CompSelection();
+            //comp.CompSelection();
 
             if (deck1 == null) {
 
