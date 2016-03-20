@@ -32,29 +32,70 @@ public class GamePlay {
         LinkedList playerHand1 = player.hand;
         LinkedList computerHand = player.compHand;
         player.setCurrentCard(deck1.pop().toString());
+        String separated2[] = player.getCurrentCard().split(" ");
+
+        if (separated2[0].equalsIgnoreCase("8")) {
+
+            Collections.shuffle(deck1);
+            player.setCurrentCard(deck1.pop().toString());
+
+        }
 
 
-        while (playerHand1 != null || computerHand != null) {
+        Boolean check = true;
+
+        System.out.println("Let's play crazy eights! \n");
 
 
-            System.out.println("Let's play crazy eights! \n");
-            System.out.println("The current card in play: " + player.getCurrentCard());
-            System.out.println("This is your hand: \n");
+        while (true) {
 
-            player.CompSelection();
-            player.playerSelection();
-            player.playCheck();
-            //comp.CompSelection();
-
-            if (deck1 == null) {
+            if (deck1.isEmpty()) {
 
                 player.newDeck();
                 deck1 = player.getDeck();
             }
 
 
+            while (playerHand1 != null) {
+
+                System.out.println("The current card in play: " + player.getCurrentCard());
+                System.out.println("This is your hand: \n");
+                player.playerSelection();
+                player.playCheck();
+                break;
+            }
+
+            while (computerHand != null) {
+
+                player.CompSelection();
+                break;
+
+            }
+
+            if (playerHand1.isEmpty()) {
+                check = false;
+            }
+
+            if (computerHand.isEmpty()) {
+                check = false;
+            }
+
+            if (check == false) {
+                break;
+            }
+
         }
 
+
+        if (playerHand1.isEmpty()) {
+
+            System.out.println("Player wins!");
+
+        }
+
+        if (computerHand.isEmpty()) {
+            System.out.println("computer wins!");
+        }
 
 
 
