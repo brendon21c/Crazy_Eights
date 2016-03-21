@@ -8,7 +8,9 @@ import java.util.LinkedList;
 public class Scoring {
 
 
-
+    /*
+    This class simply calculates the score.
+     */
     public int playerScore(LinkedList hand) {
 
         LinkedList playerHand = hand;

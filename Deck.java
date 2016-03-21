@@ -9,7 +9,9 @@ import java.util.Stack;
 public class Deck {
 
 
-
+    /*
+    This class creates a deck of 52 cards grouped together.
+     */
     public Stack Deck() {
 
         Random random = new Random();

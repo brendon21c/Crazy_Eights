@@ -43,6 +43,10 @@ public class PlayerRules extends Deck {
 
     }
 
+
+    /*
+    This block displays the players hand and returns the card they choose.
+     */
     public String playerSelection() {
 
         String selection = "";
@@ -91,6 +95,9 @@ public class PlayerRules extends Deck {
 
     }
 
+    /*
+    This block verifies the players chosen card to make sure its legal
+     */
     public void playCheck() {
 
         String selection = this.tempCard;
@@ -103,7 +110,9 @@ public class PlayerRules extends Deck {
             currentCard = currentCard + " " + currentCard + " " + currentCard;
         }
 
-
+        /*
+        This block divides out the value and suit
+         */
         String separated[] = selection.split(" ");
         String separated2[] = currentCard.split(" ");
 
@@ -114,11 +123,11 @@ public class PlayerRules extends Deck {
         suitCheck = number2 + " " + suit2;
         String suitTest = suit2 + " " + suit2;
 
-        if (number1.equalsIgnoreCase("8")) {
+        if (number1.equalsIgnoreCase("8")) { // lets the player choose a new suit for the wild card
 
             Scanner scanner = new Scanner(System.in);
             this.hand.remove(selection);
-            this.discardPile.add(getCurrentCard());
+            this.discardPile.add(getCurrentCard()); // adds card to discard pile
             this.discardPile.add(selection);
 
             System.out.println("Choose a new suit.");
@@ -152,7 +161,7 @@ public class PlayerRules extends Deck {
 
     }
 
-    public void newDeck() {
+    public void newDeck() { // sets up a new deck if the starting deck runs out
 
         Stack oldDeck = this.discardPile;
         Collections.shuffle(oldDeck);
@@ -166,6 +175,9 @@ public class PlayerRules extends Deck {
 
     }
 
+    /*
+    This constructor is the same as the player class but automates the selections rather than display them
+     */
     public void CompSelection() {
 
         String selection = "";
