@@ -9,51 +9,53 @@ public class GamePlay {
 
     public static void main(String[] args) {
 
-        Deck newDeck = new Deck();
-        PlayerRules player = new PlayerRules();
-        Scoring scoreP = new Scoring();
-        Scoring scoreC = new Scoring();
-
-
-
-        Stack deck1 = newDeck.Deck();
-        Collections.shuffle(deck1);
-        player.setDeck(deck1);
-
-        for (int x = 0; x < 7; x++) {
-
-            player.PlayerHand(deck1.pop().toString());
-
-        }
-        for (int x = 0; x < 7; x++) {
-
-            player.computerHand(deck1.pop().toString());
-
-        }
-
-        LinkedList playerHand1 = player.hand;
-        LinkedList computerHand = player.compHand;
-        player.setCurrentCard(deck1.pop().toString());
-        String separated2[] = player.getCurrentCard().split(" ");
-
-        if (separated2[0].equalsIgnoreCase("8")) {
-
-            Collections.shuffle(deck1);
-            player.setCurrentCard(deck1.pop().toString());
-
-        }
-
         int playerScore = 0;
         int compScore = 0;
 
 
-
-        Boolean check = true;
-
-        System.out.println("Let's play crazy eights! \n");
-
-
         while (true) {
+
+            Deck newDeck = new Deck();
+            PlayerRules player = new PlayerRules();
+            Scoring scoreP = new Scoring();
+            Scoring scoreC = new Scoring();
+
+
+            Stack deck1 = newDeck.Deck();
+            Collections.shuffle(deck1);
+            player.setDeck(deck1);
+
+            for (int x = 0; x < 7; x++) {
+
+                player.PlayerHand(deck1.pop().toString());
+
+            }
+            for (int x = 0; x < 7; x++) {
+
+                player.computerHand(deck1.pop().toString());
+
+            }
+
+            LinkedList playerHand1 = player.hand;
+            LinkedList computerHand = player.compHand;
+            player.setCurrentCard(deck1.pop().toString());
+            String separated2[] = player.getCurrentCard().split(" ");
+
+            if (separated2[0].equalsIgnoreCase("8")) {
+
+                Collections.shuffle(deck1);
+                player.setCurrentCard(deck1.pop().toString());
+
+            }
+
+            //int playerScore = 0;
+            //int compScore = 0;
+
+
+            Boolean check = true;
+
+            System.out.println("Let's play crazy eights! \n");
+
 
             while (true) {
 
@@ -111,36 +113,40 @@ public class GamePlay {
 
             }
 
-            Scanner playAgain = new Scanner(System.in);
 
-            System.out.println("Do you want to play again?");
-            String answer = playAgain.nextLine();
+        Scanner playAgain = new Scanner(System.in);
 
-            if (answer.equalsIgnoreCase("yes") || answer.equalsIgnoreCase("y")) {
+        System.out.println("Do you want to play again?");
+        String answer = playAgain.nextLine();
 
-                continue;
+        if (answer.equalsIgnoreCase("yes") || answer.equalsIgnoreCase("y")) {
 
-            } else {
 
-                if (playerScore < compScore) {
+            continue;
 
-                    System.out.println("Congratulations you won! \n");
-                    System.out.println("Player: " + playerScore);
-                    System.out.println("Computer: " + compScore);
-                    break;
+        } else {
 
-                } else if (compScore > playerScore) {
+            if (playerScore < compScore) {
 
-                    System.out.println("Sorry the computer won. \n");
-                    System.out.println("Player: " + playerScore);
-                    System.out.println("Computer: " + compScore);
-                    break;
+                System.out.println("Congratulations you won! \n");
+                System.out.println("Player: " + playerScore);
+                System.out.println("Computer: " + compScore);
+                break;
 
-                }
+            } else if (compScore > playerScore) {
+
+                System.out.println("Sorry the computer won. \n");
+                System.out.println("Player: " + playerScore);
+                System.out.println("Computer: " + compScore);
+                break;
 
             }
 
         }
+    }
+
+        System.out.println("Thanks for playing!");
+
 
     }
 }

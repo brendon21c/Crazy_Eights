@@ -17,23 +17,25 @@ public class Scoring {
         for (int x = 0; x < playerHand.size(); x++) {
 
             String card = playerHand.get(x).toString();
+            String temp[] = card.split(" ");
+            String process = temp[0];
 
-            if (card.equalsIgnoreCase("ace")) {
+            if (process.equalsIgnoreCase("ace")) {
 
                 total += 1;
 
-            } else if (card.equalsIgnoreCase("8")) {
+            } else if (process.equalsIgnoreCase("8")) {
 
                 total += 50;
 
-            } else if (card.equalsIgnoreCase("jack") || card.equalsIgnoreCase("queen") ||
-                    card.equalsIgnoreCase("king")) {
+            } else if (process.equalsIgnoreCase("jack") || process.equalsIgnoreCase("queen") ||
+                    process.equalsIgnoreCase("king")) {
 
                 total += 10;
 
             } else {
 
-                total += Integer.parseInt(card);
+                total += Integer.parseInt(process);
 
             }
 
