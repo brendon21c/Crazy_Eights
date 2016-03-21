@@ -2,6 +2,7 @@ package com.Brendon;
 
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.Scanner;
 import java.util.Stack;
 
 public class GamePlay {
@@ -10,7 +11,8 @@ public class GamePlay {
 
         Deck newDeck = new Deck();
         PlayerRules player = new PlayerRules();
-        //ComputerPlayer comp = new ComputerPlayer();
+        Scoring scoreP = new Scoring();
+        Scoring scoreC = new Scoring();
 
 
 
@@ -41,6 +43,10 @@ public class GamePlay {
 
         }
 
+        int playerScore = 0;
+        int compScore = 0;
+
+
 
         Boolean check = true;
 
@@ -49,56 +55,92 @@ public class GamePlay {
 
         while (true) {
 
-            if (deck1.isEmpty()) {
+            while (true) {
 
-                player.newDeck();
-                deck1 = player.getDeck();
+                if (deck1.isEmpty()) {
+
+                    player.newDeck();
+                    deck1 = player.getDeck();
+                }
+
+
+                while (playerHand1 != null) {
+
+                    System.out.println("The current card in play: " + player.getCurrentCard());
+                    System.out.println("This is your hand: \n");
+                    player.playerSelection();
+                    player.playCheck();
+                    break;
+                }
+
+                while (computerHand != null) {
+
+                    player.CompSelection();
+                    break;
+
+                }
+
+                if (playerHand1.isEmpty()) {
+                    check = false;
+                }
+
+                if (computerHand.isEmpty()) {
+                    check = false;
+                }
+
+                if (check == false) {
+                    break;
+                }
+
             }
 
-
-            while (playerHand1 != null) {
-
-                System.out.println("The current card in play: " + player.getCurrentCard());
-                System.out.println("This is your hand: \n");
-                player.playerSelection();
-                player.playCheck();
-                break;
-            }
-
-            while (computerHand != null) {
-
-                player.CompSelection();
-                break;
-
-            }
 
             if (playerHand1.isEmpty()) {
-                check = false;
+
+                int score = scoreC.playerScore(computerHand);
+                System.out.println("Player wins!");
+                compScore += score;
+
             }
 
             if (computerHand.isEmpty()) {
-                check = false;
+
+                int score = scoreP.playerScore(playerHand1);
+                System.out.println("computer wins!");
+                playerScore += score;
+
             }
 
-            if (check == false) {
-                break;
+            Scanner playAgain = new Scanner(System.in);
+
+            System.out.println("Do you want to play again?");
+            String answer = playAgain.nextLine();
+
+            if (answer.equalsIgnoreCase("yes") || answer.equalsIgnoreCase("y")) {
+
+                continue;
+
+            } else {
+
+                if (playerScore < compScore) {
+
+                    System.out.println("Congratulations you won! \n");
+                    System.out.println("Player: " + playerScore);
+                    System.out.println("Computer: " + compScore);
+                    break;
+
+                } else if (compScore > playerScore) {
+
+                    System.out.println("Sorry the computer won. \n");
+                    System.out.println("Player: " + playerScore);
+                    System.out.println("Computer: " + compScore);
+                    break;
+
+                }
+
             }
 
         }
-
-
-        if (playerHand1.isEmpty()) {
-
-            System.out.println("Player wins!");
-
-        }
-
-        if (computerHand.isEmpty()) {
-            System.out.println("computer wins!");
-        }
-
-
-
 
     }
 }
