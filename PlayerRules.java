@@ -76,8 +76,8 @@ public class PlayerRules extends Deck {
                 int entry1 = Integer.parseInt(entry);
 
                 selection = this.hand.get(entry1 - 1).toString();
-                this.tempCard = selection;
-                selection = this.hand.get(entry1 - 1).toString();
+                //this.tempCard = selection;
+                //selection = this.hand.get(entry1 - 1).toString();
 
 
                 this.tempCard = selection;

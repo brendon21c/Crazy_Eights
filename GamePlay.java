@@ -18,12 +18,12 @@ public class GamePlay {
         Collections.shuffle(deck1);
         player.setDeck(deck1);
 
-        for (int x = 0; x < 5; x++) {
+        for (int x = 0; x < 7; x++) {
 
             player.PlayerHand(deck1.pop().toString());
 
         }
-        for (int x = 0; x < 5; x++) {
+        for (int x = 0; x < 7; x++) {
 
             player.computerHand(deck1.pop().toString());
 
@@ -96,6 +96,7 @@ public class GamePlay {
         if (computerHand.isEmpty()) {
             System.out.println("computer wins!");
         }
+
 
 
 
